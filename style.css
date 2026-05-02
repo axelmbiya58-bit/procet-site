@@ -1,0 +1,463 @@
+:root {
+    --primary: #003366;
+    /* Bleu profond */
+    --secondary: #0048ff;
+    /* Orange vif */
+    --dark: #111;
+    /* Noir/gris foncé */
+    --light: #f4f4f4;
+    /* Gris clair */
+    --gris: #343333;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: black;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: auto;
+    /* logo collé à gauche */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    /* hamburger collé à droite */
+}
+
+/* Responsive : cacher le menu et afficher le hamburger */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav ul.open {
+        display: flex;
+        flex-direction: column;
+        background: var(--primary);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+}
+
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('water\ 1.jpeg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--secondary);
+}
+
+.btn {
+    background: var(--secondary);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #211812;
+}
+
+/* A propros */
+#about {
+    padding: 3rem 2rem;
+    background: #111;
+    color: #fff;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-slider {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.about-slider img {
+    width: 100%;
+    display: block;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+
+/* Stats */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('fond-industrie.png') center/cover no-repeat;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 3px solid var(--secondary);
+}
+
+.stat {
+    flex: 1;
+    margin: 0 1rem;
+    position: relative;
+}
+
+.stat h2 {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin: 0;
+    font-weight: 800;
+}
+
+.stat p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0.5rem 0;
+    color: #fff;
+}
+
+.stat span {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Ligne verticale entre les blocs */
+.stat:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    top: 20%;
+    height: 60%;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .stat:not(:last-child)::after {
+        display: none;
+    }
+}
+
+
+/* Services */
+#services {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#services h2 {
+    color: var(--light)
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: rgb(50, 41, 41);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card .icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: var(--secondary);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.card h3 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--light);
+}
+
+/* Effet flottant au survol */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    background: var(--dark);
+    color: white;
+}
+
+.card:hover .icon {
+    background: white;
+    color: var(--secondary);
+}
+
+.card:hover h3,
+.card:hover p {
+    color: white;
+}
+
+/* Catalogue */
+#catalogue {
+    background: #222020;
+    padding: 3rem 2rem;
+}
+
+#catalogue {
+    color: var(--light)
+}
+
+.product {
+    background: var(--dark);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid var(--primary);
+}
+
+.product h3 {
+    color: var(--secondary)
+}
+
+/* Projet */
+#project {
+    background: var(--light);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#project h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.contact-info h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.project-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-form label {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.project-form input,
+.project-form textarea,
+.project-form select {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.project-form button {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.project-form button:hover {
+    background: #e65c00;
+}
+
+.project-form .note {
+    font-size: 0.85rem;
+    color: var(--dark);
+    margin-top: 0.5rem;
+}
+
+/* Contact */
+
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Bouton WhatsApp flottant */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.whatsapp-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    /* couleur du halo */
+    transition: transform 0.3s ease;
+}
+
+/* Effet au survol */
+.whatsapp-icon:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Animation de pulsation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        /* vert WhatsApp */
+    }
+
+    70% {
+        box-shadow: 0 0 20px 20px rgba(37, 211, 102, 0);
+        /* halo qui s’étend */
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        /* retour à zéro */
+    }
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        display: none;
+        background: var(--primary);
+        padding: 1rem;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
