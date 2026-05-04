@@ -32,16 +32,17 @@ function animateStats() {
     const stats = document.querySelectorAll('.stat h2');
     stats.forEach(stat => {
         const target = +stat.parentElement.getAttribute('data-target');
+        const suffix = stat.parentElement.getAttribute('data-suffix') || '';
         let count = 0;
-        const increment = target / 100; // vitesse de comptage
+        const increment = target / 100;
 
         const updateCount = () => {
             count += increment;
             if (count < target) {
-                stat.textContent = Math.floor(count) + (target > 100 ? '%' : '');
+                stat.textContent = Math.floor(count) + suffix;
                 requestAnimationFrame(updateCount);
             } else {
-                stat.textContent = target + (target > 100 ? '+' : (stat.textContent.includes('%') ? '%' : ''));
+                stat.textContent = target + suffix;
             }
         };
 
@@ -49,4 +50,15 @@ function animateStats() {
     });
 }
 
+// Observer pour déclencher l’animation quand la section est visible
+const statsSection = document.querySelector('.stats');
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateStats();
+            obs.disconnect(); // éviter de relancer plusieurs fois
+        }
+    });
+}, { threshold: 0.3 }); // déclenche quand 30% de la section est visible
 
+observer.observe(statsSection);
